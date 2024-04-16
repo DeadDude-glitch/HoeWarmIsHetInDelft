@@ -3,7 +3,7 @@ stages:
 
 variables:
   DOCKER_IMAGE_NAME: "HoeWarmIsHetInDelft"
-  DOCKER_VERSION: "26.0.1-dind-alpine3.19"
+  DOCKER_VERSION: "dind"
   DOCKER_HOST: "unix:///var/run/docker.sock"
 
 deploy:
@@ -12,6 +12,5 @@ deploy:
   script:
     - docker info
     - ls -l /var/run/docker.sock
-    - systemctl restart docker
     - docker build -t $DOCKER_IMAGE_NAME .
-    - docker run -d --name $DOCKER_IMAGE_NAME $DOCKER_IMAGE_NAME
+    - docker run --name $DOCKER_IMAGE_NAME $DOCKER_IMAGE_NAME
