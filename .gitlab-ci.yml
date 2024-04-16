@@ -10,7 +10,7 @@ deploy:
   stage: deploy
   image: docker:$DOCKER_VERSION
   script:
-    - cat /etc/hosts
+    - echo "127.0.0.1 docker" >> /etc/hosts
     - ls -l /var/run/
     - docker info
     - docker build -t $DOCKER_IMAGE_NAME .
