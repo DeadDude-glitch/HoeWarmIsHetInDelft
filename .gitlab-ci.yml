@@ -3,7 +3,7 @@ stages:
 
 variables:
   DOCKER_IMAGE_NAME: "HoeWarmIsHetInDelft"
-  DOCKER_VERSION: "26.0.1-alpine3.19"
+  DOCKER_VERSION: "cli"
 
 deploy:
   stage: deploy
