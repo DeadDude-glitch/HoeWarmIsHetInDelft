@@ -6,5 +6,5 @@ WORKDIR /app
 ENV PYTHONUNBUFFERED=1
 
 RUN pip install requests
-COPY ./src/ .
+COPY ./src/ ./
 CMD [ "python", "./HoeWarmIsHetInDelft.py" ]

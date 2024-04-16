@@ -3,10 +3,10 @@ from sys import stderr
 from time import time
 
 # on my analysis of the webpage functionality
-# I found that ajaxWDxy.js constantly requests and update the UI
+# I found that ajaxWDxy.js is used to update the UI
 # from the following path https://weerindelft.nl/clientraw.txt
 # followed by the JavaScript function output Date.getTime()
-# EXAMPLE: https://weerindelft.nl/clientraw.txt?1713279404355
+# EXAMPLE: GET https://weerindelft.nl/clientraw.txt?1713279404355
 # which is a text file that is easily parsed
 
 def fault(*args, **kwargs) -> None:
@@ -31,7 +31,7 @@ def get_temperature() -> int:
         return None
     
     # attempt to parse the response
-    try: return round(float(response.split(' ')[46]))
+    try: return round(float(response.split()[4]))
     except (ValueError, IndexError):
         fault("(!) Failed to Parse Respone:")
         fault("-----"*2 + "BEGIN RESPONE" + "-----"*2)
