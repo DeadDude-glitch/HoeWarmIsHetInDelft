@@ -4,13 +4,13 @@ stages:
 variables:
   DOCKER_IMAGE_NAME: "HoeWarmIsHetInDelft"
   DOCKER_VERSION: "dind"
-  DOCKER_HOST: "unix:///var/run/docker.sock"
+  #DOCKER_HOST: "unix:///var/run/docker.sock"
 
 deploy:
   stage: deploy
   image: docker:$DOCKER_VERSION
   script:
     - docker info
-    - ls -l /var/run/docker.sock
+    - ls -l /var/run/
     - docker build -t $DOCKER_IMAGE_NAME .
     - docker run --name $DOCKER_IMAGE_NAME $DOCKER_IMAGE_NAME
