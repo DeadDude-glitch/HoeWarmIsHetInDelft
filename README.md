@@ -9,7 +9,7 @@
 3. Write a simple pipeline on [GitLab](https://www.gitlab.com) that builds the container above and then executes it.
 We’ll review the code based on clarity and correctness. It is important for the code to be robust, run correctly in a pipeline environment and to be easily troubleshootable by other DevOps engineers.
 
-## Mini Tasks
+## TODO
 
 - [X] Python script
     - [X] Deeply understand the website functionality

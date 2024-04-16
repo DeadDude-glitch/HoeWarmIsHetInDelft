@@ -1,6 +1,5 @@
 stages:
   - build
-#  - deploy
 
 variables:
   DOCKER_IMAGE_NAME: "hoewarmishetindelft"

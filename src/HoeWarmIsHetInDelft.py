@@ -9,8 +9,8 @@ from time import time
 # EXAMPLE: https://weerindelft.nl/clientraw.txt?1713279404355
 # which is a text file that is easily parsed
 
-# just to log errors if needed
 def fault(*args, **kwargs) -> None:
+# output to standard character error
     return print(*args, file=stderr, **kwargs)
 
 # simulates Date().getTime in Javascript
