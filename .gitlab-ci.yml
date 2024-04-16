@@ -3,7 +3,7 @@ stages:
   - deploy
 
 variables:
-  DOCKER_IMAGE_NAME: "HoeWarmIsHetInDelft"
+  DOCKER_IMAGE_NAME: "hoewarmishetindelft"
   DOCKER_IMAGE_TAG: "latest"
 
 build:
