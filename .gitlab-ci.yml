@@ -3,7 +3,8 @@ stages:
 
 variables:
   DOCKER_IMAGE_NAME: "HoeWarmIsHetInDelft"
-  DOCKER_VERSION: "cli"
+  DOCKER_VERSION: "dind"
+  DOCKER_HOST: "tcp://docker:2375"
 
 deploy:
   stage: deploy
