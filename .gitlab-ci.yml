@@ -1,10 +1,10 @@
 stages:
   - build
-  - deploy
+#  - deploy
 
 variables:
   DOCKER_IMAGE_NAME: "hoewarmishetindelft"
-  DOCKER_IMAGE_TAG: "latest"
+  DOCKER_IMAGE_TAG: "CodiLime"
 
 build:
   stage: build
@@ -13,11 +13,11 @@ build:
     - docker:dind
   script:
     - docker build -t $DOCKER_IMAGE_NAME:$DOCKER_IMAGE_TAG .
+    - docker run --name $DOCKER_IMAGE_NAME $DOCKER_IMAGE_NAME
 
-deploy:
-  stage: deploy
-  image: docker:stable
-  services:
-    - docker:dind
-  script:
-    - docker run --rm $DOCKER_IMAGE_NAME:$DOCKER_IMAGE_TAG
+#deploy:
+#  stage: deploy
+#  image: docker:stable
+#  services:
+#    - docker:dind
+#  script:
