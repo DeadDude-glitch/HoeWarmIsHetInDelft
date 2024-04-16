@@ -8,11 +8,11 @@ def get_temperature() -> int:
     # sometime balance-loaders and firewalls block python as a user-agent
     headers = {"User-agent": USER_AGENT}
     # simulate the interactive frontend behavior
-    try: response = get(URL + '?' + str(now()),
-                        headers = headers).text
+    try: response = get(URL + '?' + str(now()), headers = headers).text
     except ConnectionError:
         fault("(!) Failed Connecting to weerindelft.nl Service")
         return None
+    # attempt to parse the response
     try: return round(float(response.split(' ')[46]))
     except (ValueError, IndexError):
         fault("(!) Failed to Parse Respone:")
