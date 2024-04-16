@@ -4,7 +4,7 @@ stages:
 variables:
   DOCKER_IMAGE_NAME: "HoeWarmIsHetInDelft"
   DOCKER_VERSION: "dind"
-  DOCKER_HOST: "tcp://docker:2375"
+  DOCKER_HOST: "unix:///var/run/docker.sock"
 
 deploy:
   stage: deploy
