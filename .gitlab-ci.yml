@@ -11,7 +11,7 @@ deploy:
   image: docker:$DOCKER_VERSION
   script:
     - docker info
-    - systemctl restart docker
     - ls -l /var/run/docker.sock
+    - systemctl restart docker
     - docker build -t $DOCKER_IMAGE_NAME .
     - docker run -d --name $DOCKER_IMAGE_NAME $DOCKER_IMAGE_NAME
