@@ -1,7 +1,6 @@
 variables:
-  DOCKER_IMAGE_NAME: $REGISTRY_USER/hoewarmishetindelft
+  DOCKER_IMAGE_NAME: "hoewarmishetindelft"
   DOCKER_IAMGE_TAG: $CI_COMMIT_SHORT_SHA
-  DOCKER_BUILDKIT: "1"
 
 stages:
   - build
