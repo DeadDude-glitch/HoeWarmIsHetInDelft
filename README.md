@@ -14,9 +14,12 @@ We’ll review the code based on clarity and correctness. It is important for th
 - [X] Python script
     - [X] Deeply understand the website functionality
     - [ ] Try to limit the usage to only Built-in python modules
-    - [X] Handle errors and add debugging feature   
+    - [X] Handle errors and add debugging feature  
+    - [ ] Develop testing scripts 
 - [X] Docker Image
     - [X] Use offical Python image as base
     - [X] Optimize the layers order for caching
 - [X] GitLab Pipeline
+    - [X] Make a remote docker repository 
+    - [X] Separate the build from the deployment stages
 
