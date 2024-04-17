@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 from requests import get , ConnectionError
 from sys import stderr
 from time import time
@@ -16,7 +17,7 @@ def fault(*args, **kwargs) -> None:
     return print(*args, file=stderr, **kwargs)
 
 def now() -> int: 
-# simulates Date().getTim() in Javascript
+# simulates Date().getTime() in Javascript
     return int(time() * 1000)
 
 
