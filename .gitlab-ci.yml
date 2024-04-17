@@ -1,6 +1,6 @@
 variables:
   DOCKER_IMAGE_NAME: $REGISTRY_USER/hoewarmishetindelft
-  DOCKER_IMAGE_TAG: Python3_Script_$CI_COMMIT_SHORT_SHA
+  DOCKER_IMAGE_TAG: python3_script
 
 stages:
   - build
@@ -33,7 +33,7 @@ deploy:
   before_script:
     - docker login -u $REGISTRY_USER -p $REGISTRY_PASS 
   script:
-    - docker pull $DOCKER_IMAGE_NAME
+    - docker pull $DOCKER_IMAGE_NAME:$DOCKER_IMAGE_TAG
     - docker run --name $DOCKER_IMAGE_NAME $DOCKER_IMAGE_NAME
 
 
