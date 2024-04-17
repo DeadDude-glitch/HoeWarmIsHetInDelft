@@ -28,6 +28,8 @@ deploy:
   image: docker:stable
   services:
     - docker:dind
+  needs:
+    - build
   before_script:
     - docker login -u $REGISTRY_USER -p $REGISTRY_PASS 
   script:
