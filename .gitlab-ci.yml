@@ -34,6 +34,6 @@ deploy:
     - docker login -u $REGISTRY_USER -p $REGISTRY_PASS 
   script:
     - docker pull $DOCKER_IMAGE_NAME:$DOCKER_IMAGE_TAG
-    - docker run --name $DOCKER_IMAGE_NAME $DOCKER_IMAGE_NAME
+    - docker run --name $DOCKER_IMAGE_NAME $DOCKER_IMAGE_NAME:$DOCKER_IMAGE_TAG
 
 
