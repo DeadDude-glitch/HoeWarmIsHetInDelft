@@ -17,6 +17,11 @@ build:
     - docker build -t $DOCKER_IMAGE_NAME:$DOCKER_IMAGE_TAG ./
     - docker run --rm $DOCKER_IMAGE_NAME:$DOCKER_IMAGE_TAG echo "Docker image runs successfully"
     - docker push $DOCKER_IMAGE_NAME:$DOCKER_IMAGE_TAG
+  only:
+    changes:
+      - Dockerfile
+      - "*.py"
+      - .gitlab-ci.yml
 
 deploy:
   stage: deploy
