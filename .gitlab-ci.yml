@@ -1,6 +1,6 @@
 variables:
   DOCKER_IMAGE_NAME: "hoewarmishetindelft"
-  DOCKER_IAMGE_TAG: "simple"
+  DOCKER_IMAGE_TAG: "simple"
 
 stages:
   - build
