@@ -1,5 +1,5 @@
 FROM python:3.11.8
-LABEL Name = "Weather in Delft App"
+LABEL Name = "Back In Delft Python App"
 WORKDIR /app
 
 # setting up python

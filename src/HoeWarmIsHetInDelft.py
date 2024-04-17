@@ -2,54 +2,56 @@
 from requests import get , ConnectionError
 from sys import stderr
 from time import time
+from datetime import datetime
 
 """
-# on my analysis of the webpage functionality
-# I found that ajaxWDxy.js is used to update the UI
-# from the following path https://weerindelft.nl/clientraw.txt
-# followed by the JavaScript function output Date.getTime()
-# EXAMPLE: GET https://weerindelft.nl/clientraw.txt?1713279404355
-# which is a text file that is easily parsed
+on my analysis of the webpage functionality
+The webpage frontend updates itself with a periodic 
+GET requests to /clientraw.txt followed by JavaScript function Date.getTime()
+EXAMPLE: GET https://weerindelft.nl/clientraw.txt?1713279404355
 """
 
 URL = 'https://weerindelft.nl/clientraw.txt?'
 USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36'
 
-def fault(*args, **kwargs) -> None:
-# output to standard character error
-    return print(*args, file=stderr, **kwargs)
+def logError(*args, **kwargs) -> None:
+    # output to standard character error
+    return print(datetime.now(),*args, file=stderr, **kwargs)
 
-def now() -> int: 
-# simulates Date().getTime() in Javascript
+def getTime() -> int: 
+    # simulates Date().getTime() in Javascript
     return int(time() * 1000)
 
+def validateWeather(data:list) -> bool:
+    # ensure client rawdata data format follows https://linyweather.net/plugins/wdParser/index.php
+    return (data[ 0]  == '12345' and 
+            data[-1]  == '!!C10.37S143!!' and 
+            len(data) == 178)
 
 
-def get_temperature() -> float:
+def get_temperature(url:str) -> float:
     # sometime balance-loaders and firewalls block python as a user-agent
     # simulate the interactive frontend behavior and avoid triggering detection rules
     
     headers = {"User-agent": USER_AGENT}
-    url = URL + str(now())
+    url += str(getTime())
+    
     try: 
         response = get(url, headers = headers)
-        if respnse.status_code != 200: raise ConnectionError
+        if response.status_code != 200: raise ConnectionError
+        data = response.text.split()
+        if validateWeather(data): return float(data[4])
+
     except ConnectionError:
-        fault("(!) Failed Connecting to weerindelft.nl Service")
-        fault("(i) Request URL", url)
-        return None
+        logError("Uable to request", url)
     
-    # attempt to parse the response
-    try: return float(response.text.split()[4])
     except (ValueError, IndexError):
-        fault("(!) Failed to Parse Respone:")
-        fault("-----"*2 + "BEGIN RESPONE" + "-----"*2)
-        fault(response)
-        fault("-----"*2 + "END RESPONE" + "-----"*2)
-        return None
+        logError(f'Invalid weather data {response.text}')
+    
+    return None
 
 
 if __name__ == '__main__':
-    temp = get_temperature()
+    temp = get_temperature(URL)
     if temp == None : exit(1)
     print(round(temp),'degrees Celsius')
