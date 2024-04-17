@@ -9,4 +9,4 @@ RUN pip install requests
 
 # setting up application 
 COPY ./src/ ./
-CMD ["{", "python3", "HoeWarmIsHetInDelft.py", "2>error.log", ">&3", "|", "tee", "/dev/stderr;", "}", "3>&1"]
+CMD ["python3", "HoeWarmIsHetInDelft.py"]
