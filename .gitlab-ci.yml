@@ -33,6 +33,7 @@ deploy:
   before_script:
     - docker login -u $REGISTRY_USER -p $REGISTRY_PASS 
   script:
-    - docker run $DOCKER_IMAGE_NAME:$DOCKER_IMAGE_TAG
+    - docker pull $DOCKER_IMAGE_NAME
+    - docker run --name $DOCKER_IMAGE_NAME $DOCKER_IMAGE_NAME
 
 
