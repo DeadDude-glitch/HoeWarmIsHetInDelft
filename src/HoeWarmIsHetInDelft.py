@@ -30,13 +30,17 @@ def get_temperature() -> float:
     # simulate the interactive frontend behavior and avoid triggering detection rules
     
     headers = {"User-agent": USER_AGENT}
-    try: response = get(URL + str(now()), headers = headers).text
+    url = URL + str(now())
+    try: 
+        response = get(url, headers = headers)
+        if respnse.status_code != 200: raise ConnectionError
     except ConnectionError:
         fault("(!) Failed Connecting to weerindelft.nl Service")
+        fault("(i) Request URL", url)
         return None
     
     # attempt to parse the response
-    try: return float(response.split()[4])
+    try: return float(response.text.split()[4])
     except (ValueError, IndexError):
         fault("(!) Failed to Parse Respone:")
         fault("-----"*2 + "BEGIN RESPONE" + "-----"*2)
@@ -46,6 +50,6 @@ def get_temperature() -> float:
 
 
 if __name__ == '__main__':
-    temp = round(get_temperature())
+    temp = get_temperature()
     if temp == None : exit(1)
-    print(temp,'degrees Celsius')
+    print(round(temp),'degrees Celsius')
