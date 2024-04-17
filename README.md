@@ -4,10 +4,12 @@
 
 ## Task Description
 
-1. Create a Python script called ‘HoeWarmIsHetInDelft.py’ that retrieves from [weerindelft.nl site](http://www.weerindelft.nl/) the current temperature in Delft and prints it to standard output, **rounded** to degrees Celsius. Example expected output: `18 degrees Celsius`
+1. Create a Python script called ‘HoeWarmIsHetInDelft.py’ that retrieves from [weerindelft site](http://www.weerindelft.nl/) the current temperature in Delft and prints it to standard output, **rounded** to degrees Celsius. Example expected output: `18 degrees Celsius`
 2. Write an appropriate dockerfile to containerize the script developed in point 1
 3. Write a simple pipeline on [GitLab](https://www.gitlab.com) that builds the container above and then executes it.
-We’ll review the code based on clarity and correctness. It is important for the code to be robust, run correctly in a pipeline environment and to be easily troubleshootable by other DevOps engineers.
+
+Note:
+>"We’ll review the code based on clarity and correctness. It is important for the code to be robust, run correctly in a pipeline environment and to be easily troubleshootable by other DevOps engineers."
 
 ## TODO
 
@@ -17,9 +19,9 @@ We’ll review the code based on clarity and correctness. It is important for th
     - [X] Handle errors and add debugging feature  
     - [ ] Develop testing scripts 
 - [X] Docker Image
-    - [X] Use offical Python image as base
     - [X] Optimize the layers order for caching
 - [X] GitLab Pipeline
-    - [X] Make a remote docker repository 
-    - [X] Separate the build from the deployment stages
+    - [X] Constantly update a remote docker repository 
+    - [X] Separate the build from the deployment stage
+
 
