@@ -1,5 +1,6 @@
 variables:
   DOCKER_IMAGE_NAME: $REGISTRY_USER/hoewarmishetindelft
+  APP_NAME: hoewarmishetindelft
   DOCKER_IMAGE_TAG: python3_script
 
 stages:
@@ -34,6 +35,6 @@ deploy:
     - docker login -u $REGISTRY_USER -p $REGISTRY_PASS 
   script:
     - docker pull $DOCKER_IMAGE_NAME:$DOCKER_IMAGE_TAG
-    - docker run --name $DOCKER_IMAGE_NAME $DOCKER_IMAGE_NAME:$DOCKER_IMAGE_TAG
+    - docker run --name $APP_NAME $DOCKER_IMAGE_NAME:$DOCKER_IMAGE_TAG
 
 
