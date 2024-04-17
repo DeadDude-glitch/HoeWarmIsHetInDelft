@@ -12,6 +12,9 @@ from time import time
 # which is a text file that is easily parsed
 """
 
+URL = 'https://weerindelft.nl/clientraw.txt?'
+USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36'
+
 def fault(*args, **kwargs) -> None:
 # output to standard character error
     return print(*args, file=stderr, **kwargs)
@@ -21,8 +24,6 @@ def now() -> int:
     return int(time() * 1000)
 
 
-URL = 'https://weerindelft.nl/clientraw.txt?'
-USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36'
 
 def get_temperature() -> float:
     # sometime balance-loaders and firewalls block python as a user-agent
