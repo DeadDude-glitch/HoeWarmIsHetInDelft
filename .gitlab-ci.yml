@@ -24,4 +24,5 @@ deploy:
   script:
     - docker login -u $REGISTRY_USER -p $REGISTRY_PASS
     - docker run $DOCKER_IMAGE_NAME:$DOCKER_IMAGE_TAG
+    
 
