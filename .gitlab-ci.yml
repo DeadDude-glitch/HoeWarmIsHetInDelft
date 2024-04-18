@@ -8,17 +8,19 @@ stages:
   - build
   - deploy
 
-test:
+run-tests:
   stage: test
   image: python:3.11.8
   only:
     changes:
-      - /src/*.py
-      - /src/requirements.txt
+      - src/*.py
+      - src/requirements.txt
+  before_script:
+    - pip install -r src/requirements.txt
   script:
-    - pip install -r /src/requirements.txt
+    - python src/TestHoeWarmIsHetInDelft.py
 
-build:
+create-build:
   stage: build
   needs:
     - test
@@ -33,7 +35,7 @@ build:
     - docker push $DOCKER_IMAGE_NAME:$DOCKER_IMAGE_TAG
 
 
-deploy:
+deploy-image:
   stage: deploy
   image: docker:stable
   services:
