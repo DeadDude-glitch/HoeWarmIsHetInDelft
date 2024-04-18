@@ -23,7 +23,7 @@ run-tests:
 create-build:
   stage: build
   needs:
-    - test
+    - run-tests
   image: docker:stable
   services:
     - docker:dind
