@@ -11,12 +11,13 @@
 >We’ll review the code based on clarity and correctness. It is important for the code to be robust, run correctly in a pipeline environment and to be easily troubleshootable by other DevOps engineers.
 
 ## TODO
+this is a functional programming approach to the solution. for an OOP approach check the other branch. 
 
 - [X] Python script
     - [X] Deeply understand the website functionality
     - [ ] Try to limit the usage to only Built-in python modules
     - [X] Handle errors and add debugging feature  
-    - [ ] Develop testing scripts 
+    - [X] Develop testing scripts 
 - [X] Docker Image
     - [X] Optimize the layers order for caching
 - [X] GitLab Pipeline
