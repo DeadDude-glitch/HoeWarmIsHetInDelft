@@ -10,7 +10,7 @@ stages:
 
 test:
   stage: test
-  image: python3.11.8
+  image: python:3.11.8
   only:
     changes:
       - /src/*.py
