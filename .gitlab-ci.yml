@@ -37,6 +37,8 @@ create-build:
 
 deploy-image:
   stage: deploy
+  needs:
+    - create-build
   image: docker:stable
   services:
     - docker:dind
