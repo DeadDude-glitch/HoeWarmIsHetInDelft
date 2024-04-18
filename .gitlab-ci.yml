@@ -8,13 +8,14 @@ stages:
   - build
   - deploy
 
-run-tests:
+run-test:
   stage: test
   image: python:3.11.8
   only:
     changes:
       - src/*.py
       - src/requirements.txt
+      - .gitlab-ci.yml
   before_script:
     - pip install -r src/requirements.txt
   script:
@@ -23,17 +24,16 @@ run-tests:
 create-build:
   stage: build
   needs:
-    - run-tests
+    - run-test
   image: docker:stable
   services:
     - docker:dind
   before_script:
-    - docker login -u $REGISTRY_USER -p $REGISTRY_PASS 
+    - docker login -u $REGISTRY_USER -p $REGISTRY_PASS
   script:
     - docker build -t $DOCKER_IMAGE_NAME:$DOCKER_IMAGE_TAG ./
     - docker run --rm $DOCKER_IMAGE_NAME:$DOCKER_IMAGE_TAG echo "Docker image runs successfully"
     - docker push $DOCKER_IMAGE_NAME:$DOCKER_IMAGE_TAG
-
 
 deploy-image:
   stage: deploy
