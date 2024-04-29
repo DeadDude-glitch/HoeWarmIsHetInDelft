@@ -17,8 +17,5 @@ this is a functional programming approach to the solution. for an OOP approach c
     - [X] Handle errors and add debugging feature  
     - [X] Develop testing scripts 
     - [X] Optimize the layers order for caching
-- [X] GitLab Pipeline
-    - [X] Constantly update a remote docker repository 
-    - [X] Separate the build from the deployment stage
-- [X] Add a GitHub repo
+
 
