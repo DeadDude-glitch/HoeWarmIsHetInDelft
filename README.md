@@ -1,7 +1,5 @@
 # HoeWarmIsHetInDelft
 
-
-
 ## Task Description
 
 1. Create a Python script called ‘HoeWarmIsHetInDelft.py’ that retrieves from [weerindelft site](http://www.weerindelft.nl/) the current temperature in Delft and prints it to standard output, **rounded** to degrees Celsius. Example expected output: `18 degrees Celsius`
@@ -18,7 +16,6 @@ this is a functional programming approach to the solution. for an OOP approach c
     - [ ] Try to limit the usage to only Built-in python modules
     - [X] Handle errors and add debugging feature  
     - [X] Develop testing scripts 
-- [X] Docker Image
     - [X] Optimize the layers order for caching
 - [X] GitLab Pipeline
     - [X] Constantly update a remote docker repository 
